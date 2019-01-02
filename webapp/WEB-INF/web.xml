@@ -7,4 +7,31 @@
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <!--suppress WebProperties -->
+        <!-- it's included in glassfish no worry -->
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AngularServlet</servlet-name>
+        <servlet-class>se.yogurtthehor.peep.fourth.servlets.AngularServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AngularServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>
