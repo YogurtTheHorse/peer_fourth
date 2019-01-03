@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<hibernate-mapping>
+    <class name="se.yogurtthehor.peep.fourth.models.Dot" table="DOTS">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="x" type="double">
+            <column name="X" not-null="true"  />
+        </property>
+        <property name="y" type="double">
+            <column name="Y" not-null="true"  />
+        </property>
+        <property name="r" type="double">
+            <column name="R" not-null="true"  />
+        </property>
+        <property name="author" type="string">
+            <column name="AUTHOR" not-null="true" />
+        </property>
+        <property name="checked" type="boolean">
+            <column name="IS_CHECKED" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

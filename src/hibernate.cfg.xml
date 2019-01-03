@@ -21,8 +21,9 @@
         </property>
 
 
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <mapping resource="se/yogurtthehor/peep/fourth/models/LabUser.hbn.xml"/>
+        <mapping resource="se/yogurtthehor/peep/fourth/models/Dot.hbn.xml"/>
     </session-factory>
 </hibernate-configuration>
