@@ -62,5 +62,11 @@
     <orderEntry type="library" name="jersey-core-1.9 (2)" level="project" />
     <orderEntry type="library" name="jersey-server-1.9 (2)" level="project" />
     <orderEntry type="library" name="asm-3.3.1" level="project" />
+    <orderEntry type="library" name="jersey-client (2)" level="project" />
+    <orderEntry type="library" name="jersey-common" level="project" />
+    <orderEntry type="library" name="jersey-container-servlet" level="project" />
+    <orderEntry type="library" name="jersey-container-servlet-core" level="project" />
+    <orderEntry type="library" name="jersey-media-jaxb" level="project" />
+    <orderEntry type="library" name="jersey-server" level="project" />
   </component>
 </module>
