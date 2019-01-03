@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <hibernate-mapping>
     <class name="se.yogurtthehor.peep.fourth.models.LabUser" table="LAB_USER">
-        <id name="userId" type="int">
-            <column name="USER_ID" precision="5" scale="0" />
-            <generator class="increment" />
+        <id name="username" type="string">
+            <column name="USERNAME" length="20" />
+            <generator class="assigned" />
         </id>
-        <property name="username" type="string">
-            <column name="USERNAME" length="20" not-null="true" />
+        <property name="passwordHash" type="string">
+            <column name="PASSWORD_HASH" not-null="true" />
         </property>
         <property name="createdBy" type="string">
             <column name="CREATED_BY" length="20" not-null="true" />

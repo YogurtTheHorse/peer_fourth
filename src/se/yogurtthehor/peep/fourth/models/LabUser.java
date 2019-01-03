@@ -3,28 +3,12 @@ package se.yogurtthehor.peep.fourth.models;
 import java.util.Date;
 
 public class LabUser implements java.io.Serializable {
-    private int userId;
     private String username;
+    private String passwordHash;
     private String createdBy;
     private Date createdDate;
 
-    public LabUser() {
-    }
-
-    public LabUser(int userId, String username, String createdBy, Date createdDate) {
-        this.userId = userId;
-        this.username = username;
-        this.createdBy = createdBy;
-        this.createdDate = createdDate;
-    }
-
-    public int getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+    public LabUser() { }
 
     public String getUsername() {
         return this.username;
@@ -50,4 +34,11 @@ public class LabUser implements java.io.Serializable {
         this.createdDate = createdDate;
     }
 
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 }
