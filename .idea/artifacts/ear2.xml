@@ -6,12 +6,16 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="javaee-facet-classes" facet="fourth/web/Web" />
+          <element id="module-output" name="fourth" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="library" level="project" name="ojdbc7" />
           <element id="library" level="project" name="Hibernate 5.3.7-5.3.7" />
           <element id="library" level="project" name="JPA 2.0-2.0" />
+          <element id="library" level="project" name="jersey-core-1.9 (2)" />
+          <element id="library" level="project" name="jersey-server-1.9 (2)" />
+          <element id="library" level="project" name="asm-3.3.1" />
         </element>
       </element>
     </root>
