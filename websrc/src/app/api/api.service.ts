@@ -19,7 +19,7 @@ export class ApiService {
       );
   }
 
-  reister(login: string, password: string): any {
+  register(login: string, password: string): any {
     return this.http
       .post('/ear2/api/users/register', {login, password})
       .pipe(
