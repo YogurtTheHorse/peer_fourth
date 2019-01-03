@@ -1,7 +1,5 @@
-import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Config} from '../config';
 import {ApiService} from '../api/api.service';
 
 @Component({
@@ -24,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.api
-      .reister(this.registerForm.value['login'], this.registerForm.value['password'])
+      .register(this.registerForm.value['login'], this.registerForm.value['password'])
       .subscribe(console.log);
   }
 }
