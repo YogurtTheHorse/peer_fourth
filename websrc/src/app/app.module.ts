@@ -12,13 +12,17 @@ import {AppRoutingModule} from './app-routing.module';
 import {HelloComponent} from './hello/hello.component';
 import {LoginComponent} from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MainComponent } from './main/main.component';
+import {CanvasComponent} from "./canvas/canvas.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainComponent,
+    CanvasComponent
   ],
   imports: [
     BrowserModule,

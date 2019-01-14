@@ -57,4 +57,16 @@ public class Dot implements Serializable {
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
+
+    public void check() {
+        if (x > 0) {
+            checked = x <= r && y >= 0 && y <= r;
+        } else {
+            if (y > 0) {
+                checked = (x * x) + (y * y) <= r * r;
+            } else {
+                checked = 2 * y >= -(x + r);
+            }
+        }
+    }
 }

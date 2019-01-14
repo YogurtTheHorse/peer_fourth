@@ -1,7 +1,9 @@
 package se.yogurtthehor.peep.fourth.models;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+@XmlRootElement
 public class LabUser implements java.io.Serializable {
     private String username;
     private String passwordHash;

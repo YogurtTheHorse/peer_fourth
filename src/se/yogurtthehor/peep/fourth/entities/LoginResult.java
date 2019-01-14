@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class LoginResult {
     private boolean success;
+    private String username;
     private String message;
 
     public boolean isSuccess() {
@@ -21,5 +22,13 @@ public class LoginResult {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

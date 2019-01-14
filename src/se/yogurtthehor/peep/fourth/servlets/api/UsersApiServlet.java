@@ -50,6 +50,7 @@ public class UsersApiServlet {
 
         if (users.assertPassword(body)) {
             res.setSuccess(true);
+            res.setUsername(body.getLogin());
 
             req.getSession().setAttribute("login", body.getLogin());
         } else {
@@ -60,22 +61,32 @@ public class UsersApiServlet {
         return res;
     }
 
+    @Path("logout")
+    @GET
+    public String logout(@Context HttpServletResponse resp, @Context HttpServletRequest req) {
+        req.getSession().removeAttribute("login");
+        return "{\"result\": \"ok\"}";
+    }
+
     @Path("info")
     @GET
-    public String getLogin(@Context HttpServletRequest req) {
+    @Produces("application/json")
+    public String getSelf(@Context HttpServletRequest req) {
         String login = (String) req.getSession().getAttribute("login");
+        String no_login = "{\"username\":null}";
 
         if (login == null) {
-            return "";
+            return no_login;
         }
 
         LabUser user = users.getUser(login);
 
         if (user == null) {
-            return "";
+            return no_login;
         }
 
-        return user.getUsername();
+        // escaping?..
+        return "{\"username\":\""+user.getUsername() + "\"}";
     }
 
     @Path("dots")
@@ -96,6 +107,11 @@ public class UsersApiServlet {
     @Produces("application/json")
     @Consumes("application/json")
     public Dot addDot(Dot body, @Context HttpServletRequest req) {
+        String login =  (String) req.getSession().getAttribute("login");
+
+        body.setAuthor(login);
+        dots.addDot(body);
+
         return body;
     }
 }

@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.api.logout().subscribe(() => console.log('logged out'));
   }
 
   onSubmit() {

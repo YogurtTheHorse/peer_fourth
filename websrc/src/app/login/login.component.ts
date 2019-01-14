@@ -1,8 +1,7 @@
-import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Config} from '../config';
 import {ApiService} from '../api/api.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,15 +15,20 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
   }
 
   ngOnInit() {
+    this.api.logout().subscribe(() => console.log('logged out'));
   }
 
   onSubmit() {
     this.api
       .login(this.loginForm.value['login'], this.loginForm.value['password'])
-      .subscribe(console.log);
+      .subscribe(loginInfo => {
+        if (loginInfo['success']) {
+          this.router.navigate(['']);
+        }
+      });
   }
 }

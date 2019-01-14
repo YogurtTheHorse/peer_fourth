@@ -3,12 +3,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {HelloComponent} from './hello/hello.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import {MainComponent} from "./main/main.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: HelloComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-]
+  {path: '', pathMatch: 'full', canActivate: [AuthGuard], component: MainComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

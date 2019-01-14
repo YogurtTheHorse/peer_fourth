@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ear2">
+  <artifact type="war" name="ear2">
     <output-path>$PROJECT_DIR$/out/artifacts/ear2</output-path>
-    <root id="root">
+    <root id="archive" name="ear2.war">
       <element id="javaee-facet-resources" facet="fourth/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -16,7 +16,16 @@
           <element id="library" level="project" name="jersey-core-1.9 (2)" />
           <element id="library" level="project" name="jersey-server-1.9 (2)" />
           <element id="library" level="project" name="asm-3.3.1" />
+          <element id="library" level="project" name="jersey-server" />
+          <element id="library" level="project" name="jersey-media-jaxb" />
+          <element id="library" level="project" name="jersey-container-servlet-core" />
+          <element id="library" level="project" name="jersey-container-servlet" />
+          <element id="library" level="project" name="jersey-common" />
+          <element id="library" level="project" name="jersey-client (2)" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       </element>
     </root>
   </artifact>

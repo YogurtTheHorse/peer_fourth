@@ -1,0 +1,70 @@
+<div>
+  <h1>Hi, {{currentUser.username}}! <a [routerLink]="['/login']">Logout</a></h1>
+
+  <div class="media">
+    <div class="hits-display">
+      <app-canvas [radius]="radius" [submitted]="submitted" [hits]="hits" [form]="f" [isClicked]="isClicked"
+                  [isRadiusSet]="isRadiuseSet"></app-canvas>
+
+    </div>
+    <div class="dots-form">
+      <form [formGroup]="form" (ngSubmit)="submit()" #f="ngForm">
+        <div class="input-part">
+          <h4>Choose X: </h4>
+
+          <div class="select">
+            <select formControlName="validX" name="validX">
+              <option *ngFor="let fooX of validX" [value]="fooX.id">
+                {{fooX.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="input-part">
+          <h4>Choose Y:</h4>
+          <input type="text" formControlName="validY"
+                 [ngClass]="{ 'is-invalid': submitted && form.controls.validY.errors}">
+
+          <div *ngIf="submitted && form.controls.validY.errors">Y is invalid!</div>
+        </div>
+        <div class="input-part">
+          <h4>Choose R: </h4>
+          <div class="select">
+            <select formControlName="validR" name="validR" (change)="RadiusChange()">
+              <option *ngFor="let fooR of validR" [value]="fooR.id">
+                {{fooR.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="input-part" style="position: relative">
+          <div style="position: absolute; bottom: 0px">
+            <button class="btn btn-primary">Отправить</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div>
+    <table class="centered table table-hover">
+      <thead>
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>R</th>
+        <th>Попадание</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let hit of hits">
+        <td>{{ hit.x }}</td>
+        <td>{{ hit.y }}</td>
+        <td>{{ hit.r }}</td>
+        <td>{{ hit.checked }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
