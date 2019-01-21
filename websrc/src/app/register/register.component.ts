@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ApiService} from '../api/api.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
   }
 
   ngOnInit() {
@@ -24,6 +25,12 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.api
       .register(this.registerForm.value['login'], this.registerForm.value['password'])
-      .subscribe(console.log);
+      .subscribe(loginInfo => {
+        if (loginInfo['success']) {
+          this.router.navigate(['login']);
+        } else {
+          alert(loginInfo['message'])
+        }
+      });
   }
 }

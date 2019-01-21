@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
       .subscribe(loginInfo => {
         if (loginInfo['success']) {
           this.router.navigate(['']);
+        } else {
+          alert(loginInfo['message'])
         }
       });
   }

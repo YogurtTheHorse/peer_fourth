@@ -48,15 +48,19 @@ export class CanvasComponent implements AfterViewInit {
       this.ctx.fill();
       this.ctx.fillStyle = '#000';
 
-      const x = (event.clientX - rect.left - rect.width / 2) / 20;
-      const y = (rect.height / 2 - event.clientY + rect.top) / 20;
+      const x = (event.clientX - rect.left - this.width / 2) / 20;
+      const y = (this.height / 2 - event.clientY + rect.top) / 20;
+
+      console.log(event);
+      console.log(rect);
+      console.log(x, y);
 
       this.x = x;
       this.y = y;
     } else {
       this.isClicked = false;
     }
-    // this.form.ngSubmit.emit();
+    this.form.ngSubmit.emit();
   }
 
   public updateChart(radius, history: Hit[]) {
@@ -133,7 +137,7 @@ export class CanvasComponent implements AfterViewInit {
 
   private drawXValues() {
     const ctx = this.ctx;
-    let x = this.width / 2 - (Math.floor(this.width / 20) + 1) * 20;
+    let x = this.width / 2 - (Math.floor(this.width / 20)) * 20;
 
     ctx.font = '9px Arial';
 
@@ -199,7 +203,7 @@ export class CanvasComponent implements AfterViewInit {
       }
       if (history[i].r === this.radius) {
         this.ctx.beginPath();
-        this.ctx.arc(history[i].x * 20 + 150 + 0.5, 150 - history[i].y * 20 - 0.5, 1, 0, Math.PI * 2);
+        this.ctx.arc(history[i].x * 20 + this.width / 2 + 0.5, this.height / 2 - history[i].y * 20 - 0.5, 1, 0, Math.PI * 2);
         this.ctx.fill();
       }
     }

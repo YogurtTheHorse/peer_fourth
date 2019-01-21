@@ -3,6 +3,7 @@ package se.yogurtthehor.peep.fourth.utils;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
@@ -16,10 +17,16 @@ public class PasswordHashing {
      * suitable for storing in a database.
      * Empty passwords are not supported.
      */
-    public static String getSaltedHash(String password) throws Exception {
-        byte[] salt = SecureRandom.getInstance("SHA1PRNG").generateSeed(saltLen);
-        // store the salt with the password
-        return Base64.getEncoder().encodeToString(salt) + "$" + hash(password, salt);
+    public static String getSaltedHash(String password) {
+        byte[] salt = new byte[0];
+        try {
+            salt = SecureRandom.getInstance("SHA1PRNG").generateSeed(saltLen);
+            return Base64.getEncoder().encodeToString(salt) + "$" + hash(password, salt);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     /**
