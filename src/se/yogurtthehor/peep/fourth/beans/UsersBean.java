@@ -1,29 +1,29 @@
 package se.yogurtthehor.peep.fourth.beans;
 
-import org.hibernate.Session;
 import se.yogurtthehor.peep.fourth.entities.LoginRequest;
 import se.yogurtthehor.peep.fourth.models.LabUser;
-import se.yogurtthehor.peep.fourth.utils.HibernateUtil;
+import se.yogurtthehor.peep.fourth.utils.EntityManagerUtil;
 import se.yogurtthehor.peep.fourth.utils.PasswordHashing;
 
 import javax.ejb.Singleton;
+import javax.persistence.EntityManager;
 
 @Singleton(name = "UsersEJB")
 public class UsersBean {
-    private final Session session;
+    private final EntityManager entityManager;
 
     public UsersBean() {
-        session = HibernateUtil.getSessionFactory().openSession();
+        entityManager = EntityManagerUtil.getEntityManager();
     }
 
     public void saveUser(LabUser user) {
-        session.getTransaction().begin();
-        session.save(user);
-        session.getTransaction().commit();
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
     }
 
     public boolean assertPassword(LoginRequest loginRequest) throws Exception {
-        LabUser user = session.get(LabUser.class, loginRequest.getLogin());
+        LabUser user = getUser(loginRequest.getLogin());
 
         if (user == null) {
             return false;
@@ -33,6 +33,6 @@ public class UsersBean {
     }
 
     public LabUser getUser(String login) {
-        return session.get(LabUser.class, login);
+        return entityManager.find(LabUser.class, login);
     }
 }

@@ -1,13 +1,24 @@
 package se.yogurtthehor.peep.fourth.models;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "jpa_dots")
 public class Dot implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name = "id")
     private int id;
+    @Column(name = "x")
     private double x;
+    @Column(name = "y")
     private double y;
+    @Column(name = "r")
     private double r;
+    @Column(name = "author")
     private String author;
+    @Column(name = "is_checked")
     private boolean checked;
 
     public int getId() {

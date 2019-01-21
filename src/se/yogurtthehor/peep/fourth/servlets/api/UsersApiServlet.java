@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 @Path("users")
 public class UsersApiServlet {
@@ -26,17 +28,22 @@ public class UsersApiServlet {
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    public RegisterResult register(RegisterRequest body, @Context HttpServletResponse resp, @Context HttpServletRequest req) throws Exception {
+    public RegisterResult register(RegisterRequest body, @Context HttpServletResponse resp, @Context HttpServletRequest req) {
         LabUser user = new LabUser();
         user.setUsername(body.getLogin());
         user.setCreatedBy("register_api");
         user.setCreatedDate(new Date());
         user.setPasswordHash(PasswordHashing.getSaltedHash(body.getPassword()));
 
-        users.saveUser(user);
-
         RegisterResult res = new RegisterResult();
-        res.setSuccess(true);
+
+        try {
+            users.saveUser(user);
+            res.setSuccess(true);
+        } catch (Exception e) {
+            res.setSuccess(false);
+            res.setMessage("Login already taken");
+        }
 
         return res;
     }
@@ -97,7 +104,12 @@ public class UsersApiServlet {
         DotsResult dotsRes = new DotsResult();
         String login =  (String) req.getSession().getAttribute("login");
 
-        dotsRes.setDots(login == null ? new ArrayList<>() : dots.getDotsByAuthor(login));
+        List<Dot> dd = login == null ? new ArrayList<>() : dots.getDotsByAuthor(login);
+
+        Comparator<Dot> comparator = Comparator.comparingInt(Dot::getId);
+        dd.sort(comparator);
+
+        dotsRes.setDots(dd);
 
         return dotsRes;
     }
