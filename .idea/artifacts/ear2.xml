@@ -22,6 +22,17 @@
           <element id="library" level="project" name="jersey-container-servlet" />
           <element id="library" level="project" name="jersey-common" />
           <element id="library" level="project" name="jersey-client (2)" />
+          <element id="library" level="project" name="FastInfoset-1.2.15" />
+          <element id="library" level="project" name="byte-buddy-1.9.5" />
+          <element id="library" level="project" name="hibernate-commons-annotations-5.1.0.Final" />
+          <element id="library" level="project" name="hibernate-core-5.4.0.Final" />
+          <element id="library" level="project" name="hibernate-jpamodelgen-5.4.0.Final" />
+          <element id="library" level="project" name="istack-commons-runtime-3.0.7" />
+          <element id="library" level="project" name="javassist-3.24.0-GA" />
+          <element id="library" level="project" name="jaxb-api-2.3.1" />
+          <element id="library" level="project" name="jaxb-runtime-2.3.1" />
+          <element id="library" level="project" name="stax-ex-1.8" />
+          <element id="library" level="project" name="txw2-2.3.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
